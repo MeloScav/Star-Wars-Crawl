@@ -1,0 +1,36 @@
+body{
+  width: 100%;
+  height: 100%;
+  background-image: url("etoiles.png");
+  margin: 0px;
+  overflow: hidden; /* Pour ne pas qu'il y ait le scrollbar */
+  color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#titre, #texte{
+     width: 70%;
+     text-align: center;
+     transform: perspective(280px) rotateX(25deg);
+}
+
+/*           Animation           */
+#titre{
+    font-size: 30px;
+    opacity: 1;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-name: titre;
+    animation-timing-function: ease-out;  /*Commence doucement puis décélère jusqu'à la fin*/
+}
+@@keyframes titre {
+    from { opacity: 0;}
+    to{ opacity: 1;}
+  /*  0%{ opacity: 0; }
+    20%{ opacity: 1; }
+    80%{ opacity: 1; }
+    100%{ opacity: 0; }*/
+}
