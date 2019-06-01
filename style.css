@@ -1,36 +1,125 @@
-body{
-  width: 100%;
-  height: 100%;
-  background-image: url("etoiles.png");
-  margin: 0px;
-  overflow: hidden; /* Pour ne pas qu'il y ait le scrollbar */
-  color: yellow;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("etoiles.png");
+    overflow: hidden;  /* Pour ne pas qu'il y ait le scrollbar*/
 }
 
-#titre, #texte{
-     width: 70%;
-     text-align: center;
-     transform: perspective(280px) rotateX(25deg);
+/*.fade {
+    position: relative;
+    width: 100%;
+    min-height: 20vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, black 75%);
+    z-index: 1;
+}*/
+
+
+#intro {
+    padding-top: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    position: absolute;
+  /*  position: absolute;
+    top: -30%;
+    left: 30%;*/
+    z-index: 1;
+    animation: intro 4s ease-out 1s;
+    color: #C03DCD;
+    font-family: cursive;
+    font-size: 50%;
+    opacity: 0;
+}
+@keyframes intro {
+    0%{
+      opacity: 0;
+    }
+    20%{
+      opacity: 1;
+    }
+    90%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
 }
 
-/*           Animation           */
-#titre{
-    font-size: 30px;
-    opacity: 1;
-    animation-delay: 1s;
-    animation-duration: 1s;
-    animation-name: titre;
-    animation-timing-function: ease-out;  /*Commence doucement puis décélère jusqu'à la fin*/
+#logo{
+    /*position: absolute;
+    top: -30%;
+    left: 40%;
+    z-index: 1;
+    animation: logo 6s ease-out 5s;
+    opacity: 0;*/
+    padding-top: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    position: absolute;
+    opacity: 0;
+    animation: logo 9s ease-out 5s;
 }
-@@keyframes titre {
-    from { opacity: 0;}
-    to{ opacity: 1;}
-  /*  0%{ opacity: 0; }
-    20%{ opacity: 1; }
-    80%{ opacity: 1; }
-    100%{ opacity: 0; }*/
+#logo img{
+    width: 15vw;
+}
+@keyframes logo {
+    0%{
+      transform: scale(2.75);
+      opacity: 1;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+      transform: scale(0.1);
+    }
+}
+
+
+.star-wars {
+    /*width: 60%;*/  /* ==> Le texte s'aligne sur la gauche et ça na va pas */
+    /*        Pour center        */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /*align-items: center;*/ /* ==> Texte devient trop petit/*
+    /*margin: auto;*/
+    height: 800px;
+    color: yellow;
+    font-family: cursive;
+    font-size: 700%;
+    font-weight: bold;
+    perspective: 400px;
+    text-align: justify;
+    /*transform: perspective(280px) rotateX(25deg);*/  /*  ==> Ne marche pas! */
+}
+
+
+
+.crawl {
+    position: relative;   /* pour ajuster la propriété TOP de l'animation*/
+    top: 9999px;    /*Pour le faire disparaître de l'écran */
+    transform-origin: 50% 100%;   /*Définit l'origine du biais au centre même pour appliquer ensuite l'animation*/
+    animation: crawl 40s linear;
+}
+
+
+.crawl > .title h1 {
+  margin: 0 0 100px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@keyframes crawl {
+  0% {
+    top: 1;   /*Commence en dessous de l'écran */
+    transform: rotateX(20deg)  translateZ(0);    /*Faites pivoter le texte de 20 degrés tout en le gardant à proximité du lecteur.*/
+  }
+  100% {
+    top: -6000px;   /*Texte hors de l'écran à la fin*/
+    transform: rotateX(25deg) translateZ(-2500px);     /*Augmente la rotation et éloigne le texte du spectateur*/
+  }
 }
